@@ -13,10 +13,19 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
+        {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+        {% endif %}
         
-        <h3>Sign Up</h3>
+        <h3>Sign In</h3>
 
-        <form action="/signin" method="post"">
+        <form action=" " method="POST">
+
             {% csrf_token %}
             <label for="">Username</label>
             <input type="text" id="username" name="username" placeholder="Enter Your Username" Required>
@@ -25,9 +34,11 @@
             <input type="password" id="pass1" name="pass1" placeholder="Enter Your Password" Required>
             <br>
 
-            
+            <button type="submit">Log In</button> <br>
+            <a href="{% url 'home' %}"> Go to Home</a>
 
-            <button type="submit">Sign In</button>
+
+            <p class="fs-6 text-center mt-3">Not Registered? <a href="{% url 'signup' %}">Sign up</a></p>
         </form>
         
         <script src="" async defer></script>
